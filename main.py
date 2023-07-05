@@ -1,31 +1,30 @@
-# Инициализация игрового поля
+# Поле
 board = [[" " for _ in range(3)] for _ in range(3)]
 
-# Функция для отрисовки игрового поля
 def draw_board():
     for row in board:
         print("|".join(row))
         print("-----")
 
-# Функция для проверки выигрышной комбинации
+# Проверка
 def check_winner(player):
-    # Проверка по горизонтали и вертикали
+    # по горизонтали и вертикали
     for i in range(3):
         if all(cell == player for cell in board[i]) or all(row[i] == player for row in board):
             return True
-    # Проверка по диагоналям
+    # по диагоналям
     if board[0][0] == board[1][1] == board[2][2] == player or board[0][2] == board[1][1] == board[2][0] == player:
         return True
     return False
 
-# Функция для осуществления хода игрока 444
+# ход игрока
 def make_move(player, row, col):
     if board[row][col] == " ":
         board[row][col] = player
         return True
     return False
 
-# Основной игровой цикл
+# игра
 def play_game():
     current_player = "X"
     draw_board()
@@ -45,5 +44,4 @@ def play_game():
         else:
             print("Неверный ход. Попробуйте ещё раз.")
 
-# Запуск игры
 play_game()
